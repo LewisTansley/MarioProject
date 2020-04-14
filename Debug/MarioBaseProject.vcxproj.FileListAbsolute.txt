@@ -1,2 +1,4 @@
 C:\Users\Lewis\Documents\GitHub\MarioBaseProject\Debug\MarioBaseProject.exe
 C:\Users\Lewis\Documents\GitHub\MarioBaseProject\Debug\MarioBaseProject.pdb
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Debug\MarioBaseProject.exe
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Debug\MarioBaseProject.pdb

@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _CHARACTER_H
+#define _CHARACTER_H
+
 #include "SDL.h"
 #include "Commons.h"
 #include <iostream>
@@ -30,11 +33,10 @@ protected:
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
 
-
 private:
 
 	bool mMovingLeft;
 	bool mMovingRight;
 
-
 };
+#endif //_CHARACTER_H

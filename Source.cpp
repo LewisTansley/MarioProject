@@ -90,6 +90,7 @@ bool InitSDL() {
 
 bool Update() {
 
+	Uint32 newTime = SDL_GetTicks();
 
 	SDL_Event e;
 
@@ -110,8 +111,6 @@ bool Update() {
 		}
 	}
 
-	Uint32 newTime = SDL_GetTicks();
- 
 	gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
 
 	gOldTime = newTime;
