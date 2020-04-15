@@ -11,6 +11,11 @@ struct Vector2D {
 		y = 0.0f;
 	}
 
+	Vector2D(float fXParam, float fYParam)
+	{
+		x = fXParam;
+		y = fYParam;
+	}
 
 };
 enum SCREENS {

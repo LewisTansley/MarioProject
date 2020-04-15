@@ -28,7 +28,7 @@ bool GameScreenLevel1::InitLevel() {
 		return false;
 	}
 
-	myCharacter = new Character(mRenderer, "Images/Mario.png", Vector2D());
+	myCharacter = new Character(mRenderer, "Images/Mario.png", Vector2D(64,330));
 
 	return true;
 

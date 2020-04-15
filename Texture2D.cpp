@@ -46,7 +46,7 @@ void Texture2D::Render(Vector2D newPosition, SDL_RendererFlip flip, double angle
 
 bool Texture2D::LoadFromFile(string path) {
 
-	Free();
+
 
 	SDL_Surface* pSurface = IMG_Load(path.c_str());
 
