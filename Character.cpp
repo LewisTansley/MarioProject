@@ -62,24 +62,24 @@ Character::~Character() {
          switch (e.type) {
              case SDL_KEYDOWN:
                  switch (e.key.keysym.sym) {
-                 case SDLK_LEFT:
-                     mMovingLeft = true;
-                     cout << "left" << endl;
-                 break;
-                 case SDLK_RIGHT:
-                     mMovingRight = true;
-                     cout << "right" << endl;
-                 break;
+                     case SDLK_LEFT:
+                         mMovingLeft = true;
+                         cout << "left" << endl;
+                     break;
+                     case SDLK_RIGHT:
+                         mMovingRight = true;
+                         cout << "right" << endl;
+                     break;
                  }
              break;
              case SDL_KEYUP:
                  switch (e.key.keysym.sym) {
-                 case SDLK_LEFT:
-                     mMovingLeft = false;
-                 break;
-                 case SDLK_RIGHT:
-                     mMovingRight = false;
-                 break;
+                     case SDLK_LEFT:
+                         mMovingLeft = false;
+                     break;
+                     case SDLK_RIGHT:
+                         mMovingRight = false;
+                     break;
                  }
              break;
          }

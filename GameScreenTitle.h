@@ -16,7 +16,7 @@ public:
 	~GameScreenTitle();
 
 	void Render();
-	void Update(float tick, SDL_Event e);
+	void Update(float deltaTime, SDL_Event e);
 
 private:
 	Texture2D* mBackgroundTexture;

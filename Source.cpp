@@ -6,6 +6,7 @@
 #include "Texture2D.h"
 #include "Commons.h"
 #include "GameScreenManager.h"
+#include "source.h"
 
 using namespace::std;
 
@@ -14,14 +15,12 @@ SDL_Renderer* gRenderer = NULL;
 
 GameScreenManager* gameScreenManager;
 
-Uint32 gOldTime;
+SDL_Event e;
 
-bool InitSDL();
-void CloseSDL();
-bool Update();
-void Render();
+Game::Game(int argc, char* argv[]) {
 
-int main(int argc, char* args[]) {
+	deltaTime = 0;
+	gOldTime = 0;
 
 	bool quit = false;
 
@@ -35,16 +34,17 @@ int main(int argc, char* args[]) {
 
 			Render();
 			quit = Update();
-		
+
 		}
 
 		CloseSDL();
-		return true;
-		
+
 	}
 }
 
-bool InitSDL() {
+Game::~Game(void) {}
+
+bool Game::InitSDL() {
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		cout << "SDL did not initialise. ERROR: " << SDL_GetError() << endl;
@@ -82,17 +82,16 @@ bool InitSDL() {
 			return false;
 		}
 
+
 		return true;
 
 	}
 
 }
 
-bool Update() {
+bool Game::Update() {
 
-	Uint32 newTime = SDL_GetTicks();
-
-	SDL_Event e;
+	deltaTime = SDL_GetTicks();
 
 	SDL_PollEvent(&e);
 
@@ -111,18 +110,20 @@ bool Update() {
 		}
 	}
 
-	gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
+	gameScreenManager->Update((float)(deltaTime - gOldTime) / 1000.0f, e);
 
-	gOldTime = newTime;
+	gOldTime = deltaTime;
+
+	cout << "tick " << deltaTime << endl;
 
 	return false;
 
 }
 
-void Render() {
+void Game::Render() {
 
-	SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 	SDL_RenderClear(gRenderer);
+	SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 	
 	gameScreenManager->Render();
 
@@ -130,7 +131,7 @@ void Render() {
 
 }
 
-void CloseSDL() {
+void Game::CloseSDL() {
 	
 	delete gameScreenManager;
 	gameScreenManager = NULL;

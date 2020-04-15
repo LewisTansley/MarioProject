@@ -14,9 +14,10 @@ GameScreenLevel1::~GameScreenLevel1() {
 
 	delete mBackgroundTexture;
 	mBackgroundTexture = NULL;
-	mRenderer = NULL;
+	
 	delete myCharacter;
 	myCharacter = NULL;
+
 }
 
 bool GameScreenLevel1::InitLevel() {
