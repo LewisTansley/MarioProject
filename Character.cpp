@@ -49,24 +49,17 @@ Character::~Character() {
 
  void Character::Update(float deltaTime, SDL_Event e) {
 
-     if (mMovingLeft) {
-         MoveLeft(deltaTime);
-     }
-     else if (mMovingRight) {
-         MoveRight(deltaTime);
-     }
-
      SDL_PollEvent(&e);
 
      while (SDL_PollEvent(&e)) {
          switch (e.type) {
              case SDL_KEYDOWN:
                  switch (e.key.keysym.sym) {
-                     case SDLK_LEFT:
+                     case SDLK_a:
                          mMovingLeft = true;
                          cout << "left" << endl;
                      break;
-                     case SDLK_RIGHT:
+                     case SDLK_d:
                          mMovingRight = true;
                          cout << "right" << endl;
                      break;
@@ -74,10 +67,10 @@ Character::~Character() {
              break;
              case SDL_KEYUP:
                  switch (e.key.keysym.sym) {
-                     case SDLK_LEFT:
+                     case SDLK_a:
                          mMovingLeft = false;
                      break;
-                     case SDLK_RIGHT:
+                     case SDLK_d:
                          mMovingRight = false;
                      break;
                  }
@@ -85,6 +78,15 @@ Character::~Character() {
          }
 
      }
+
+     if (mMovingLeft) {
+         MoveLeft(deltaTime);
+     }
+     else if (mMovingRight) {
+         MoveRight(deltaTime);
+     }
+
+     cout << mPosition.x << mPosition.y << endl;
 
  }
 
