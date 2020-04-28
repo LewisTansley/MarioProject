@@ -2,6 +2,7 @@
 #include "Texture2D.h"
 #include "Constants.h"
 
+
 Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D startPosition) {
 
     mRenderer = renderer;
@@ -15,6 +16,8 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D startPos
     mMovingLeft = false;
     mMovingRight = false;
 
+    mFacingDirection = FACING_RIGHT;
+
 }
 
 Character::~Character() {
@@ -25,42 +28,27 @@ Character::~Character() {
 
 }
 
- void Character::Render(){
- 
-     mTexture->Render(Vector2D(), SDL_FLIP_NONE);
-
- }
-
- void Character::MoveLeft(float deltaTime) {
-
-     mPosition.x -= 1.0f;
-
-     SetPosition(mPosition);
-
- }
-
- void Character::MoveRight(float deltaTime) {
-
-     mPosition.x += 1.0f;
-
-     SetPosition(mPosition);
-
- }
-
  void Character::Update(float deltaTime, SDL_Event e) {
 
      SDL_PollEvent(&e);
 
      while (SDL_PollEvent(&e)) {
+
          switch (e.type) {
              case SDL_KEYDOWN:
                  switch (e.key.keysym.sym) {
                      case SDLK_a:
                          mMovingLeft = true;
+                         if (mFacingDirection != FACING_LEFT) {
+                             mFacingDirection = FACING_LEFT;
+                         }
                          cout << "left" << endl;
                      break;
                      case SDLK_d:
                          mMovingRight = true;
+                         if (mFacingDirection != FACING_RIGHT) {
+                             mFacingDirection = FACING_RIGHT;
+                         }
                          cout << "right" << endl;
                      break;
                  }
@@ -86,13 +74,39 @@ Character::~Character() {
          MoveRight(deltaTime);
      }
 
-     cout << mPosition.x << mPosition.y << endl;
+ }
+
+ void Character::Render() {
+
+     if (mFacingDirection == FACING_RIGHT) {
+         mTexture->Render(mPosition, SDL_FLIP_NONE);
+     }
+     else {
+         mTexture->Render(mPosition, SDL_FLIP_HORIZONTAL);
+     }
+
+ }
+
+ void Character::MoveLeft(float deltaTime) {
+
+     mPosition.x -= 1.0f * deltaTime;
+
+     SetPosition(mPosition);
+
+ }
+
+ void Character::MoveRight(float deltaTime) {
+
+     mPosition.x += 1.0f * deltaTime;
+
+     SetPosition(mPosition);
 
  }
 
  void Character::SetPosition(Vector2D newPosition) {
 
      mPosition = newPosition;
+     
      
  }
 

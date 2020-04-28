@@ -38,5 +38,7 @@ private:
 	bool mMovingLeft;
 	bool mMovingRight;
 
+	FACING mFacingDirection;
+
 };
 #endif //_CHARACTER_H

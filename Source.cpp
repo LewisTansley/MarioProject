@@ -15,25 +15,31 @@ SDL_Renderer* gRenderer = NULL;
 
 GameScreenManager* gameScreenManager;
 
-SDL_Event e;
+Uint32 startTime;
+Uint32 deltaTime;
+
 
 Game::Game(int argc, char* argv[]) {
-
-	deltaTime = 0;
-	gOldTime = 0;
 
 	bool quit = false;
 
 	if (InitSDL()) {
 
 		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_LEVEL1);
+		deltaTime = 0;
 
-		gOldTime = SDL_GetTicks();
+		cout << "startTime" << "   " << "deltaTime(ms)" << "   " << "SDL_GetTicks()" << endl;
 
 		while (!quit) {
 
+			startTime = SDL_GetTicks();
+
 			Render();
+
 			quit = Update();
+
+			deltaTime = SDL_GetTicks() - startTime;
+			cout << "   " << startTime << "            " << deltaTime << "              " << SDL_GetTicks() << endl;
 
 		}
 
@@ -45,6 +51,8 @@ Game::Game(int argc, char* argv[]) {
 Game::~Game(void) {}
 
 bool Game::InitSDL() {
+
+	SDL_Init(SDL_INIT_EVENTS);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 		cout << "SDL did not initialise. ERROR: " << SDL_GetError() << endl;
@@ -82,7 +90,6 @@ bool Game::InitSDL() {
 			return false;
 		}
 
-
 		return true;
 
 	}
@@ -91,30 +98,27 @@ bool Game::InitSDL() {
 
 bool Game::Update() {
 
-	deltaTime = SDL_GetTicks();
+	SDL_Event e;
 
 	SDL_PollEvent(&e);
 
 	while (SDL_PollEvent(&e)) {
 		switch (e.type) {
-		case SDL_KEYDOWN:
-			switch (e.key.keysym.sym) {
-			case SDLK_ESCAPE:
-				return true;
-				break;
-			}
+			cout << e.key.keysym.sym << endl;
+			case SDL_KEYDOWN:
+				switch (e.key.keysym.sym) {
+					case SDLK_ESCAPE:
+						return true;
+					break;
+				}
 			break;
-		case SDL_QUIT:
-			return true;
+			case SDL_QUIT:
+				return true;
 			break;
 		}
 	}
-
-	gameScreenManager->Update((float)(deltaTime - gOldTime) / 1000.0f, e);
-
-	gOldTime = deltaTime;
-
-	cout << "tick " << deltaTime << endl;
+	
+	gameScreenManager->Update(deltaTime, e);
 
 	return false;
 
@@ -122,8 +126,8 @@ bool Game::Update() {
 
 void Game::Render() {
 
-	SDL_RenderClear(gRenderer);
 	SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
+	SDL_RenderClear(gRenderer);
 	
 	gameScreenManager->Render();
 

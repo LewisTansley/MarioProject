@@ -28,3 +28,9 @@ enum SCREENS {
 	SCREEN_HIGHSCORES
 
 };
+enum FACING {
+
+	FACING_LEFT = 0,
+	FACING_RIGHT
+
+};

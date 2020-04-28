@@ -36,11 +36,10 @@ bool GameScreenLevel1::InitLevel() {
 
 }
 
-void GameScreenLevel1::Render(){
+void GameScreenLevel1::Render(){ 
 
 	mBackgroundTexture->Render(Vector2D(), SDL_FLIP_NONE);
 	myCharacter->Render();
-
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e){

@@ -26,13 +26,6 @@ public:
 
 private:
 
-	Uint32 deltaTime;
-	Uint32 gOldTime;
-
-	Uint32 frameStart;
-	Uint32 frameTime;
-	Uint32 frameDelay;
-
 protected:
 
 

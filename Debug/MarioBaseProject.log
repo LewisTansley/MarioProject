@@ -1,2 +1,3 @@
-﻿  GameScreenLevel1.cpp
+﻿  Source.cpp
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Source.cpp(121,28): warning C4244: 'argument': conversion from 'Uint32' to 'float', possible loss of data
   MarioBaseProject.vcxproj -> C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Debug\MarioBaseProject.exe
