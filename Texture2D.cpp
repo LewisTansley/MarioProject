@@ -36,7 +36,7 @@ void Texture2D::Render(Vector2D newPosition, SDL_RendererFlip flip, double angle
 
 	//SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0x00);
 
-	SDL_Rect renderLocation = { 0,0,mWidth,mHeight };
+	SDL_Rect renderLocation = { newPosition.x,newPosition.y,mWidth,mHeight };
 
 	SDL_RenderCopyEx(mRenderer, mTexture, NULL, &renderLocation, 0, NULL, SDL_FLIP_NONE);
 

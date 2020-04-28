@@ -17,8 +17,8 @@ GameScreenLevel1::~GameScreenLevel1() {
 	delete mBackgroundTexture;
 	mBackgroundTexture = NULL;
 	
-	delete myCharacter;
-	myCharacter = NULL;
+	//delete myCharacter;
+	//myCharacter = NULL;
 
 }
 
@@ -30,16 +30,16 @@ bool GameScreenLevel1::InitLevel() {
 		return false;
 	}
 
-	myCharacter = new Character(mRenderer, "Images/Mario.png", Vector2D(64,330));
+	myCharacter = new Player(mRenderer, "Images/Mario.png", Vector2D(64, 330));
 
 	return true;
 
 }
 
 void GameScreenLevel1::Render(){ 
-
-	mBackgroundTexture->Render(Vector2D(), SDL_FLIP_NONE);
+	
 	myCharacter->Render();
+	mBackgroundTexture->Render(Vector2D(), SDL_FLIP_NONE);
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e){

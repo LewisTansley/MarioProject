@@ -1,10 +1,7 @@
-#include "Constants.h"
 #include <iostream>
 #include "SDL/image_include/SDL_image.h"
 #include "SDL/include/SDL.h"
 #include "SDL/mixer_include/SDL_mixer.h"
-#include "Texture2D.h"
-#include "Commons.h"
 #include "GameScreenManager.h"
 #include "source.h"
 
@@ -15,8 +12,8 @@ SDL_Renderer* gRenderer = NULL;
 
 GameScreenManager* gameScreenManager;
 
-Uint32 startTime;
-Uint32 deltaTime;
+float startTime;
+float deltaTime;
 
 
 Game::Game(int argc, char* argv[]) {
@@ -28,7 +25,7 @@ Game::Game(int argc, char* argv[]) {
 		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_LEVEL1);
 		deltaTime = 0;
 
-		cout << "startTime" << "   " << "deltaTime(ms)" << "   " << "SDL_GetTicks()" << endl;
+		//cout << "startTime" << "   " << "deltaTime(ms)" << "   " << "SDL_GetTicks()" << endl;
 
 		while (!quit) {
 
@@ -39,7 +36,7 @@ Game::Game(int argc, char* argv[]) {
 			quit = Update();
 
 			deltaTime = SDL_GetTicks() - startTime;
-			cout << "   " << startTime << "            " << deltaTime << "              " << SDL_GetTicks() << endl;
+			//cout << "   " << startTime << "            " << deltaTime << "              " << SDL_GetTicks() << endl;
 
 		}
 
@@ -102,21 +99,18 @@ bool Game::Update() {
 
 	SDL_PollEvent(&e);
 
-	while (SDL_PollEvent(&e)) {
 		switch (e.type) {
-			cout << e.key.keysym.sym << endl;
+		
 			case SDL_KEYDOWN:
 				switch (e.key.keysym.sym) {
-					case SDLK_ESCAPE:
+					case SDLK_q:
 						return true;
-					break;
+ 					break;
 				}
 			break;
-			case SDL_QUIT:
-				return true;
-			break;
+			
 		}
-	}
+	
 	
 	gameScreenManager->Update(deltaTime, e);
 

@@ -5,10 +5,10 @@
 #include <SDL.h>
 #include "GameScreen.h"
 #include "Commons.h"
-#include "Character.h"
+#include "Player.h"
 
 class Texture2D;
-class Character;
+class Player;
 
 class GameScreenLevel1 : GameScreen {
 
@@ -22,7 +22,7 @@ public:
 
 private:
 	Texture2D* mBackgroundTexture;
-	Character* myCharacter;
+	Player* myCharacter;
 
 	bool InitLevel();
 
