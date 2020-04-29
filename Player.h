@@ -42,17 +42,18 @@ protected:
 
 
 	virtual void AddGravity(float deltaTime);
-	virtual void ViewportCollision(float deltaTime);
 	virtual void Collision(float deltaTime);
-	virtual void Jump();
+	virtual void Jump(float deltaTime);
 
-	virtual void MoveLeft(float deltaTime);
-	virtual void MoveRight(float deltaTime);
+	virtual void Movement(float deltaTime);
 
 private:
 
 	bool mMovingLeft;
 	bool mMovingRight;
+	bool mMoveLeft;
+	bool mMoveRight;
+
 
 	FACING mFacingDirection;
 

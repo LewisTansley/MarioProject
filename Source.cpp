@@ -4,17 +4,21 @@
 #include "SDL/mixer_include/SDL_mixer.h"
 #include "GameScreenManager.h"
 #include "source.h"
+#include <string>
 
 using namespace::std;
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
-
 GameScreenManager* gameScreenManager;
 
-float startTime;
-float deltaTime;
+Mix_Music* gMusic = NULL;
 
+float oldTime;
+float deltaTime;
+float newTime;
+
+void LoadMusic();
 
 Game::Game(int argc, char* argv[]) {
 
@@ -23,20 +27,25 @@ Game::Game(int argc, char* argv[]) {
 	if (InitSDL()) {
 
 		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_LEVEL1);
-		deltaTime = 0;
 
 		//cout << "startTime" << "   " << "deltaTime(ms)" << "   " << "SDL_GetTicks()" << endl;
 
+		oldTime = SDL_GetTicks();
+
 		while (!quit) {
 
-			startTime = SDL_GetTicks();
+			newTime = SDL_GetTicks();
+			deltaTime = newTime - oldTime;
 
 			Render();
 
 			quit = Update();
 
-			deltaTime = SDL_GetTicks() - startTime;
-			//cout << "   " << startTime << "            " << deltaTime << "              " << SDL_GetTicks() << endl;
+			//SDL_Delay(1);
+
+			oldTime = newTime;
+
+			//cout << "   " << oldTime << "            " << deltaTime << "              " << SDL_GetTicks() << endl;
 
 		}
 
@@ -46,6 +55,15 @@ Game::Game(int argc, char* argv[]) {
 }
 
 Game::~Game(void) {}
+
+void LoadMusic(string path) {
+	gMusic = Mix_LoadMUS(path.c_str());
+
+	if (gMusic == NULL) {
+		cout << "Failed to load Music! Error: " << Mix_GetError() << endl;
+	}
+
+}
 
 bool Game::InitSDL() {
 
@@ -87,11 +105,25 @@ bool Game::InitSDL() {
 			return false;
 		}
 
+		
+		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+			cout << "Mixer failed to initiliase. ERROR: " << Mix_GetError() << endl;
+			return false;
+		}
+
+		LoadMusic("Audio/DE8BIT.mp3");
+
+		if (Mix_PlayingMusic() == 0) {
+			Mix_PlayMusic(gMusic, -1);
+		}
+
 		return true;
 
 	}
 
 }
+
+
 
 bool Game::Update() {
 

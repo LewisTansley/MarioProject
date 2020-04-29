@@ -2,6 +2,8 @@
 #include "Texture2D.h"
 #include "Constants.h"
 
+float velocity;
+float acceleration = 0.02f;
 
 Player::Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition) {
 
@@ -44,22 +46,14 @@ void Player::AddGravity(float deltaTime) {
     }
 }
 
-void Player::ViewportCollision(float deltaTime) {
-
-    //Checks if Mario is trying to dissapear
-    //if (mPosition.x > Graphics::GetViewportWidth()) {
-    //    mPosition.x -= _pacman->pacmanSpeed * deltaTime;
-    //}
-
-}
 void Player::Collision(float deltaTime) {
 
-    if (mCollidingBottom || mCollidingTop || mCollidingLeft || mCollidingRight) {
+    /*if (mCollidingBottom || mCollidingTop || mCollidingLeft || mCollidingRight) {
         mColliding = true;
     }
     else {
         mColliding = false;
-    }
+    }*/
     if (mCollidingBottom) {
         mCanJump = true;
     }
@@ -68,20 +62,23 @@ void Player::Collision(float deltaTime) {
     }
 }
 
-void Player::Jump() {
+void Player::Jump(float deltaTime) {
 
     if (!mJumping) {
-        mJumpForce = INITIAL_JUMP_FORCE;
-        mJumping = true;
+        mJumpForce = 22.5f;
         mCanJump = false;
     }
-
+    if (mJumping) {
+        mPosition.y -= mJumpForce * (deltaTime / 16);
+        mJumpForce -= 0.05f * deltaTime;
+        if (mJumpForce <= 0.0f) {
+            mJumping = false;
+        }
+    }
 
 }
 
 void Player::Update(float deltaTime, SDL_Event e) {
-
-
 
     switch (e.type) {
        case SDL_KEYDOWN:
@@ -100,7 +97,7 @@ void Player::Update(float deltaTime, SDL_Event e) {
                break;
                case SDLK_SPACE:
                    if (mCanJump) {
-                       Jump();
+                       mJumping = true;
                    }
                break;
            }
@@ -116,22 +113,17 @@ void Player::Update(float deltaTime, SDL_Event e) {
            }
        break;
     }
-
-    if (mJumping) {
-        mPosition.y -= mJumpForce * deltaTime;
-        mJumpForce -= JUMP_FORCE_DECREMENT * deltaTime;
-        if (mJumpForce <= 0.0f) {
-            mJumping = false;
+ 
+    if (mMovingLeft || mMovingRight) {
+        Movement(deltaTime);
+    }
+    else {
+        if (velocity > 0.0f) {
+            velocity -= acceleration * (deltaTime / 16);
         }
     }
-
-    if (mMovingLeft) {
-        MoveLeft(deltaTime);
-    }
-    else if (mMovingRight) {
-        MoveRight(deltaTime);
-    }
-    
+        
+    Jump(deltaTime);
     AddGravity(deltaTime);
     Collision(deltaTime);
 
@@ -148,26 +140,34 @@ void Player::Update(float deltaTime, SDL_Event e) {
 
  }
 
- void Player::MoveLeft(float deltaTime) {
+void Player::Movement(float deltaTime) {
 
-     mPosition.x -= MOVEMENTSPEED;
+    if (mMovingLeft) {
 
-     SetPosition(mPosition);
+        if (velocity < 0.5f) {
+            velocity += acceleration * (deltaTime / 16);
+        }
 
- }
+        mPosition.x -= velocity * deltaTime;
+    }
 
- void Player::MoveRight(float deltaTime) {
+    if (mMovingRight) {
 
-     mPosition.x += MOVEMENTSPEED;
+        if (velocity < 0.5f) {
+            velocity += acceleration * (deltaTime / 16);
+        }
 
-     SetPosition(mPosition);
+        mPosition.x += velocity * deltaTime;
 
- }
+    }
+    
+    SetPosition(mPosition);
+
+}
 
  void Player::SetPosition(Vector2D newPosition) {
 
      mPosition = newPosition;
-     
      
  }
 
