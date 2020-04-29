@@ -5,7 +5,7 @@
 float velocity;
 float acceleration = 0.02f;
 
-Player::Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition) {
+Player::Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition,LevelMap* map) {
 
     mRenderer = renderer;
 	mTexture = new Texture2D(mRenderer);
@@ -25,6 +25,8 @@ Player::Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition)
 
     mFacingDirection = FACING_RIGHT;
 
+    mCurrentLevelMap = map;
+
 }
 
 Player::~Player() {
@@ -33,17 +35,14 @@ Player::~Player() {
     mRenderer = NULL;
     mTexture = NULL;
 
+
 }
 
 void Player::AddGravity(float deltaTime) {
 
-    if (mPosition.y < 342) {
-        mPosition.y += 0.5f * deltaTime;
-        mCollidingBottom = false;
-    }
-    else {
-        mCollidingBottom = true;
-    }
+    mPosition.y += 96.0f * deltaTime;
+    mCollidingBottom = true;
+
 }
 
 void Player::Collision(float deltaTime) {
@@ -79,6 +78,16 @@ void Player::Jump(float deltaTime) {
 }
 
 void Player::Update(float deltaTime, SDL_Event e) {
+
+    int centralXPosition = (int)(mPosition.x + (mTexture->GetWidth() * 0.5f)) / TILE_WIDTH;
+    int footPosition = (int)(mPosition.y + mTexture->GetHeight()) / TILE_HEIGHT;
+
+    if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition) == 0) {
+        AddGravity(deltaTime);
+    }
+    else {
+        mCanJump = true;
+    }
 
     switch (e.type) {
        case SDL_KEYDOWN:

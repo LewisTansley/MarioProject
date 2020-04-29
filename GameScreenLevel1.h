@@ -6,6 +6,7 @@
 #include "GameScreen.h"
 #include "Commons.h"
 #include "Player.h"
+#include "LevelMap.h"
 
 class Texture2D;
 class Player;
@@ -23,6 +24,10 @@ public:
 private:
 	Texture2D* mBackgroundTexture;
 	Player* myCharacter;
+
+	void SetLevelMap();
+
+	LevelMap* mLevelMap;
 
 	bool InitLevel();
 

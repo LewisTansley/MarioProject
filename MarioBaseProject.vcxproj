@@ -148,23 +148,27 @@
     <Library Include="SDL\SDL2_mixer.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameScreenIntro.h" />
+    <ClInclude Include="GameScreenMenu.h" />
+    <ClInclude Include="LevelMap.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Commons.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GameScreenLevel1.h" />
     <ClInclude Include="GameScreenManager.h" />
-    <ClInclude Include="GameScreenTitle.h" />
     <ClInclude Include="source.h" />
     <ClInclude Include="Structs.h" />
     <ClInclude Include="Texture2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameScreenIntro.cpp" />
+    <ClCompile Include="GameScreenMenu.cpp" />
+    <ClCompile Include="LevelMap.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameScreenLevel1.cpp" />
     <ClCompile Include="GameScreenManager.cpp" />
-    <ClCompile Include="GameScreenTitle.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Texture2D.cpp" />

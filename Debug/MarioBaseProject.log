@@ -1,4 +1,18 @@
-﻿  Source.cpp
+﻿  GameScreenIntro.cpp
+  GameScreenMenu.cpp
+  LevelMap.cpp
+  Player.cpp
+  GameScreen.cpp
+  GameScreenLevel1.cpp
+  GameScreenManager.cpp
+  main.cpp
+  Source.cpp
 C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Source.cpp(33,25): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
 C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Source.cpp(37,26): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+  Texture2D.cpp
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Texture2D.cpp(39,41): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Texture2D.cpp(39,41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Texture2D.cpp(39,55): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Texture2D.cpp(39,55): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
   MarioBaseProject.vcxproj -> C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Debug\MarioBaseProject.exe

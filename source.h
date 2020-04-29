@@ -10,6 +10,7 @@
 #include "Texture2D.h"
 #include "Commons.h"
 #include "GameScreenManager.h"
+#include <string>
 
 using namespace::std;
 
@@ -23,6 +24,8 @@ public:
 	void CloseSDL();
 	bool Update();
 	void Render();
+
+	SCREENS currentMusic;
 
 private:
 

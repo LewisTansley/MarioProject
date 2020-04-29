@@ -39,9 +39,6 @@
     <ClInclude Include="GameScreenManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameScreenTitle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -49,6 +46,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Structs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreenIntro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreenMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,13 +74,19 @@
     <ClCompile Include="GameScreenManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameScreenTitle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScreenIntro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScreenMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

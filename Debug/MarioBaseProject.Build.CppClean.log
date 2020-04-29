@@ -3,11 +3,13 @@ c:\users\lewis\documents\github\marioproject\marioproject\debug\vc142.idb
 c:\users\lewis\documents\github\marioproject\marioproject\debug\texture2d.obj
 c:\users\lewis\documents\github\marioproject\marioproject\debug\source.obj
 c:\users\lewis\documents\github\marioproject\marioproject\debug\main.obj
-c:\users\lewis\documents\github\marioproject\marioproject\debug\gamescreentitle.obj
-c:\users\lewis\documents\github\marioproject\marioproject\debug\gamescreen.obj
-c:\users\lewis\documents\github\marioproject\marioproject\debug\player.obj
 c:\users\lewis\documents\github\marioproject\marioproject\debug\gamescreenmanager.obj
 c:\users\lewis\documents\github\marioproject\marioproject\debug\gamescreenlevel1.obj
+c:\users\lewis\documents\github\marioproject\marioproject\debug\gamescreen.obj
+c:\users\lewis\documents\github\marioproject\marioproject\debug\player.obj
+c:\users\lewis\documents\github\marioproject\marioproject\debug\levelmap.obj
+c:\users\lewis\documents\github\marioproject\marioproject\debug\gamescreenmenu.obj
+c:\users\lewis\documents\github\marioproject\marioproject\debug\gamescreenintro.obj
 c:\users\lewis\documents\github\marioproject\marioproject\debug\mariobaseproject.exe
 c:\users\lewis\documents\github\marioproject\marioproject\debug\mariobaseproject.ilk
 c:\users\lewis\documents\github\marioproject\marioproject\debug\mariobaseproject.pdb

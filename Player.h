@@ -6,6 +6,7 @@
 #include "Commons.h"
 #include <iostream>
 #include <string>
+#include "LevelMap.h"
 
 using namespace::std;
 
@@ -15,7 +16,7 @@ class Player {
 
 public:
 
-	Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition);
+	Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition, LevelMap* map);
 	~Player();
 
 	virtual void Render();
@@ -54,6 +55,7 @@ private:
 	bool mMoveLeft;
 	bool mMoveRight;
 
+	LevelMap* mCurrentLevelMap;
 
 	FACING mFacingDirection;
 

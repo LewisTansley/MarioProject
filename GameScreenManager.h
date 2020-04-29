@@ -18,10 +18,14 @@ public:
 
 	void ChangeScreen(SCREENS newScreen);
 
+	SCREENS activeScreen;
+
 private:
 
 	SDL_Renderer* mRenderer;
 	GameScreen* mCurrentScreen;
+
+	bool canChangeScreen;
 
 };
 

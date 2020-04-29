@@ -26,7 +26,7 @@ Game::Game(int argc, char* argv[]) {
 
 	if (InitSDL()) {
 
-		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_LEVEL1);
+		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
 
 		//cout << "startTime" << "   " << "deltaTime(ms)" << "   " << "SDL_GetTicks()" << endl;
 
@@ -57,6 +57,7 @@ Game::Game(int argc, char* argv[]) {
 Game::~Game(void) {}
 
 void LoadMusic(string path) {
+
 	gMusic = Mix_LoadMUS(path.c_str());
 
 	if (gMusic == NULL) {
@@ -111,12 +112,14 @@ bool Game::InitSDL() {
 			return false;
 		}
 
-		LoadMusic("Audio/DE8BIT.mp3");
+		LoadMusic("Audio/ADG8BIT.mp3");
+		currentMusic = SCREEN_INTRO;
 
 		if (Mix_PlayingMusic() == 0) {
-			Mix_PlayMusic(gMusic, -1);
+			Mix_PlayMusic(gMusic, 0);
 		}
 
+		SDL_Delay(1);
 		return true;
 
 	}
@@ -126,6 +129,20 @@ bool Game::InitSDL() {
 
 
 bool Game::Update() {
+
+	if (Mix_PlayingMusic() == 0 && gameScreenManager->activeScreen == SCREEN_INTRO) {
+		gameScreenManager->ChangeScreen(SCREEN_MENU);
+	}
+	if (currentMusic == SCREEN_INTRO && gameScreenManager->activeScreen == SCREEN_MENU) {
+		currentMusic = SCREEN_MENU;
+		LoadMusic("Audio/ADG.mp3");
+		Mix_PlayMusic(gMusic, -1);
+	}
+	if (Mix_PlayingMusic() == 1 && currentMusic == SCREEN_MENU && gameScreenManager->activeScreen == SCREEN_LEVEL1) {
+		currentMusic = SCREEN_LEVEL1;
+		LoadMusic("Audio/MarioTheme.mp3");
+		Mix_PlayMusic(gMusic, -1);
+	}
 
 	SDL_Event e;
 
@@ -140,7 +157,9 @@ bool Game::Update() {
  					break;
 				}
 			break;
-			
+			case SDL_QUIT:
+				return true;
+			break;
 		}
 	
 	
