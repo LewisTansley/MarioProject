@@ -1,3 +1,6 @@
-﻿  Source.cpp
+﻿  Player.cpp
+  Source.cpp
 C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Source.cpp(32,28): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
   MarioBaseProject.vcxproj -> C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Debug\MarioBaseProject.exe

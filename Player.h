@@ -30,6 +30,22 @@ protected:
 	Vector2D mPosition;
 	Texture2D* mTexture;
 
+	bool mJumping;
+	bool mCanJump;
+	float mJumpForce;
+
+	bool mColliding;
+	bool mCollidingBottom;
+	bool mCollidingTop;
+	bool mCollidingLeft;
+	bool mCollidingRight;
+
+
+	virtual void AddGravity(float deltaTime);
+	virtual void ViewportCollision(float deltaTime);
+	virtual void Collision(float deltaTime);
+	virtual void Jump();
+
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
 
