@@ -119,7 +119,7 @@ bool Game::InitSDL() {
 			Mix_PlayMusic(gMusic, 0);
 		}
 
-		SDL_Delay(1);
+		SDL_Delay(3);
 		return true;
 
 	}

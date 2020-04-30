@@ -98,9 +98,7 @@ void Player::Update(float deltaTime, SDL_Event e) {
                        mJumping = true;
                    }
                break;
-               case SDLK_LALT:
-                   PlaySound("Audio/Shoot.wav", 0);
-                   break;
+               
            }
        break;
        case SDL_KEYUP:
@@ -141,6 +139,14 @@ void Player::Update(float deltaTime, SDL_Event e) {
 
     //cout << GetPosition().x << " " << GetPosition().y << endl;
 
+    if ((mPosition.x + (mTexture->GetWidth() / 2)) < 0) {
+        mPosition.x = SCREEN_WIDTH - (mTexture->GetWidth() / 2);
+        SDL_Delay(1);
+    }
+    if ((mPosition.x + (mTexture->GetWidth() / 2)) > SCREEN_WIDTH) {
+        mPosition.x = 0 - (mTexture->GetWidth() / 2);
+        SDL_Delay(1);
+    }
 }
 
  void Player::Render() {

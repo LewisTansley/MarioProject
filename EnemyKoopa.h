@@ -17,7 +17,7 @@ class EnemyKoopa : public Character{
 
 public:
 
-	EnemyKoopa(SDL_Renderer* renderer, string imagePath, LevelMap* map, Vector2D startPosition, FACING startFacing, float movementSpeed);
+	EnemyKoopa(SDL_Renderer* renderer, string imagePath, LevelMap* map, Vector2D startPosition, FACING startFacing, float movementSpeed, int tiles);
 	~EnemyKoopa();
 
 	virtual void Render();
@@ -38,6 +38,16 @@ protected:
 	Texture2D* mTexture;
 	float mCollisionRadius;
 
+	bool mColliding;
+	bool mCollidingBottom;
+	bool mCollidingTop;
+	bool mCollidingLeft;
+	bool mCollidingRight;
+
+	virtual void AddGravity(float deltaTime);
+	virtual void Collision(float deltaTime);
+
+
 private:
 
 	bool mMovingLeft;
@@ -57,6 +67,8 @@ private:
 	FACING mFacingDirection;
 
 	float mMovementSpeed;
+	float velocity;
+	float acceleration = 0.005f;
 
 };
 #endif //_ENEMYKOOPA_H

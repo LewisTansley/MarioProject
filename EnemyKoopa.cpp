@@ -5,7 +5,7 @@
 
 using namespace::std;
 
-EnemyKoopa::EnemyKoopa(SDL_Renderer* renderer, string imagePath, LevelMap* map, Vector2D startPosition, FACING startFacing, float movementSpeed) : Character(renderer, imagePath, startPosition, map) {
+EnemyKoopa::EnemyKoopa(SDL_Renderer* renderer, string imagePath, LevelMap* map, Vector2D startPosition, FACING startFacing, float movementSpeed, int tiles) : Character(renderer, imagePath, startPosition, map) {
 
 	mRenderer = renderer;
 	mTexture = new Texture2D(mRenderer);
@@ -21,13 +21,32 @@ EnemyKoopa::EnemyKoopa(SDL_Renderer* renderer, string imagePath, LevelMap* map, 
 
 	mInjured = false;
 
-	mSingleSpriteWidth = mTexture->GetWidth() / 2;
+	mSingleSpriteWidth = mTexture->GetWidth() / tiles;
 	mSingeSpriteHeight = mTexture->GetHeight();
+
+	mCurrentLevelMap = map;
 
 }
 EnemyKoopa::~EnemyKoopa() {
 
 }
+
+void EnemyKoopa::Collision(float deltaTime) {
+
+	if (mCollidingBottom) {
+		mCanJump = true;
+	}
+	else {
+		mCanJump = false;
+	}
+}
+
+void EnemyKoopa::AddGravity(float deltaTime) {
+
+	mPosition.y += 0.5f * deltaTime;
+	mCollidingBottom = false;
+}
+
 void EnemyKoopa::TakeDamage() {
 
 	mInjured = true;
@@ -36,6 +55,7 @@ void EnemyKoopa::TakeDamage() {
 	Jump();
 
 }
+
 void EnemyKoopa::Jump() {
 
 	if (!mJumping) {
@@ -77,7 +97,7 @@ void EnemyKoopa::Render() {
 		mTexture->Render(portionOfSpritesheet, destRect, SDL_FLIP_HORIZONTAL,0);
 
 	}
-	cout << "!" << endl;
+	//cout << "!" << endl;
 }
 void EnemyKoopa::Update(float deltaTime, SDL_Event e) {
 
@@ -102,7 +122,37 @@ void EnemyKoopa::Update(float deltaTime, SDL_Event e) {
 		}
 	}
 
+	int centralXPosition = (int)(mPosition.x + (mTexture->GetWidth() * 0.5f)) / TILE_WIDTH;
+	int footPosition = (int)(mPosition.y - 2 + mTexture->GetHeight()) / TILE_HEIGHT;
 
+	if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition) == 0) {
+		AddGravity(deltaTime);
+	}
+	else {
+		mCollidingBottom = true;
+	}
+
+	Collision(deltaTime);
+
+	if (velocity < 0.1f) {
+		velocity += acceleration * (deltaTime / 64);
+	}
+
+	if (mFacingDirection == FACING_LEFT) {
+		mPosition.x -= velocity * deltaTime;
+	}
+	else if(mFacingDirection == FACING_RIGHT){
+		mPosition.x += velocity * deltaTime;
+	}
+
+	if ((mPosition.x + (mTexture->GetWidth() / 2)) < 0) {
+		mPosition.x = SCREEN_WIDTH - (mTexture->GetWidth() / 2);
+		SDL_Delay(1);
+	}
+	if (mPosition.x > SCREEN_WIDTH) {
+		mPosition.x = 0 - (mTexture->GetWidth() / 2);
+		SDL_Delay(1);
+	}
 
 }
 

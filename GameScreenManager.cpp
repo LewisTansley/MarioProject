@@ -8,6 +8,8 @@
 #include "Progression.h"
 
 bool canProgress = false;
+bool pipeEntered = false;
+
 
 GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startScreen) {
 
@@ -33,8 +35,9 @@ void GameScreenManager::Update(float deltaTime, SDL_Event e) {
 
 	//cout << "gsm: " << canProgress;
 
-	if (canProgress == 1) {
+	if (pipeEntered == 1) {
 			canProgress = false;
+			pipeEntered = false;
 			ChangeScreen(SCREEN_LEVEL2);
 			canChangeScreen = false;
 	}

@@ -1,3 +1,31 @@
-﻿  GameScreenLevel1.cpp
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(13,14): warning C4101: 'koopaEnemy': unreferenced local variable
+﻿  EnemyKoopa.cpp
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(24,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(25,42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(83,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(86,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(89,44): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(89,44): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(89,63): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(89,63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(91,62): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(91,62): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(91,81): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(91,81): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(149,30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\EnemyKoopa.cpp(153,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  GameScreenLevel1.cpp
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(15,14): warning C4101: 'koopaEnemy': unreferenced local variable
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(66,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(79,184): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(79,127): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(82,184): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(82,127): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GameScreenLevel2.cpp
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(61,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(74,188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(74,131): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(77,188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(77,131): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GameScreenManager.cpp
+  Generating Code...
   MarioBaseProject.vcxproj -> C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Debug\MarioBaseProject.exe

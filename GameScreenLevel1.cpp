@@ -4,13 +4,15 @@
 #include "Texture2D.h"
 #include "Collisions.h"
 #include "Progression.h"
+#include "time.h"
+
 
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer) {
 
 	mRenderer = renderer;
 	InitLevel();
 
-	EnemyKoopa* koopaEnemy;
+	EnemyKoopa* koopaEnemy[4];
 
 }
 
@@ -20,9 +22,6 @@ GameScreenLevel1::~GameScreenLevel1() {
 	mBackgroundTexture = NULL;
 	
 	mLevelMap = NULL;
-
-	//delete myCharacter;
-	//myCharacter = NULL;
 
 	mEnemies.clear();
 
@@ -55,9 +54,6 @@ bool GameScreenLevel1::InitLevel() {
 
 	SetLevelMap();
 
-	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, 0.5f);
-	CreateKoopa(Vector2D(325, 32), FACING_LEFT, 0.5f);
-
 	mBackgroundTexture = new Texture2D(mRenderer);
 	if (!mBackgroundTexture->LoadFromFile("Images/Level1.png")) {
 		cout << "Failed to load background texture!" << endl;
@@ -66,6 +62,26 @@ bool GameScreenLevel1::InitLevel() {
 
 	myCharacter = new Player(mRenderer, "Images/Mario.png", Vector2D(64, 330),mLevelMap);
 
+
+	srand(time(NULL));
+
+	int upperWidth = SCREEN_WIDTH;
+	int lowerWidth = 0;
+	int upperHeight = -20;
+	int lowerHeight = -10;
+
+	
+
+	for (int i = 0; i < 4; i++) {
+
+		int a = rand() % 2;
+		if (a == 1) {
+			koopaEnemy[i] = new EnemyKoopa(mRenderer, "Images/Koopa.png", mLevelMap, Vector2D((rand() % (upperWidth - lowerWidth + 1)) + lowerWidth, (rand() % (upperHeight - lowerHeight + 1)) + lowerHeight), FACING_LEFT, 0.2f,2);
+		}
+		else {
+			koopaEnemy[i] = new EnemyKoopa(mRenderer, "Images/Koopa.png", mLevelMap, Vector2D((rand() % (upperWidth - lowerWidth + 1)) + lowerWidth, (rand() % (upperHeight - lowerHeight + 1)) + lowerHeight), FACING_RIGHT, 0.2f,2);
+		}
+	}
 
 
 	return true;
@@ -80,6 +96,9 @@ void GameScreenLevel1::Render(){
 
 	mBackgroundTexture->Render(Vector2D(), SDL_FLIP_NONE);
 	myCharacter->Render();
+	for (int i = 0; i < 4; i++) {
+		koopaEnemy[i]->Render();
+	}
 
 }
 
@@ -114,15 +133,15 @@ void GameScreenLevel1::Render(){
 //
 //}
 
-void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed) {
-
-	koopaEnemy = new EnemyKoopa(mRenderer, "Images/Koopa.png", mLevelMap, position, direction, speed);
-
-	mEnemies.push_back(koopaEnemy);
-
-}
+//void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed) {
+//
+//
+//	mEnemies.push_back(koopaEnemy);
+//
+//}
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e){
+	
 
 	//if (Collisions::Instance()->Circle(myCharacter, myCharacter)) {
 	//} 
@@ -132,8 +151,14 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e){
 	if (myCharacter->GetPosition().x > 210 && myCharacter->GetPosition().x < 264 && myCharacter->GetPosition().y > 110 && myCharacter->GetPosition().y < 130) {
 		canProgress = true;
 	}
+	if (canProgress && myCharacter->GetPosition().x > 450 && myCharacter->GetPosition().x < 480 && myCharacter->GetPosition().y > 24 && myCharacter->GetPosition().y < 26) {
+		pipeEntered = true;
+	}
 	//cout << "gsl1: " << canProgress << endl;;
 
 	myCharacter->Update(deltaTime, e);
-		
+
+	for (int i = 0; i < 4; i++) {
+		koopaEnemy[i]->Update(deltaTime, e);
+	}
 }

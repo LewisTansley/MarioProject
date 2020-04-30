@@ -6,6 +6,8 @@
 #include "GameScreen.h"
 #include "Player.h"
 #include "LevelMap.h"
+#include "EnemyKoopa.h"
+
 
 class Texture2D;
 class Player;
@@ -23,6 +25,9 @@ public:
 private:
 	Texture2D* mBackgroundTexture;
 	Player* myCharacter;
+
+	EnemyKoopa* koopaEnemy[50];
+
 
 	void SetLevelMap();
 

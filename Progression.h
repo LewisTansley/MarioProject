@@ -3,6 +3,7 @@
 #define _PROGRESSION_H
 
 extern bool canProgress;
+extern bool pipeEntered;
 
 
 #endif // !_PROGRESSION_H

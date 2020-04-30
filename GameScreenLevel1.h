@@ -22,13 +22,13 @@ public:
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
 
-	void UpdateEnemies(float deltaTime, SDL_Event e);
+	//void UpdateEnemies(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D position, FACING direction, float speed);
 
 private:
 	Texture2D* mBackgroundTexture;
 	Player* myCharacter;
-	EnemyKoopa* koopaEnemy;
+	EnemyKoopa* koopaEnemy[4];
 
 	void SetLevelMap();
 
