@@ -148,7 +148,11 @@
     <Library Include="SDL\SDL2_mixer.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="Collisions.h" />
+    <ClInclude Include="EnemyKoopa.h" />
     <ClInclude Include="GameScreenIntro.h" />
+    <ClInclude Include="GameScreenLevel2.h" />
     <ClInclude Include="GameScreenMenu.h" />
     <ClInclude Include="LevelMap.h" />
     <ClInclude Include="Player.h" />
@@ -157,12 +161,18 @@
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GameScreenLevel1.h" />
     <ClInclude Include="GameScreenManager.h" />
+    <ClInclude Include="Progression.h" />
+    <ClInclude Include="SoundEffect.h" />
     <ClInclude Include="source.h" />
     <ClInclude Include="Structs.h" />
     <ClInclude Include="Texture2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="EnemyKoopa.cpp" />
     <ClCompile Include="GameScreenIntro.cpp" />
+    <ClCompile Include="GameScreenLevel2.cpp" />
     <ClCompile Include="GameScreenMenu.cpp" />
     <ClCompile Include="LevelMap.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -170,6 +180,7 @@
     <ClCompile Include="GameScreenLevel1.cpp" />
     <ClCompile Include="GameScreenManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SoundEffect.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Texture2D.cpp" />
   </ItemGroup>

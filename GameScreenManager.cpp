@@ -3,6 +3,11 @@
 #include "GameScreenIntro.h"
 #include "GameScreenMenu.h"
 #include "GameScreenLevel1.h"
+#include "GameScreenLevel2.h"
+#include "Commons.h"
+#include "Progression.h"
+
+bool canProgress = false;
 
 GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startScreen) {
 
@@ -12,6 +17,8 @@ GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startScreen
 	activeScreen = startScreen;
 
 	canChangeScreen = true;
+
+
 }
 
 
@@ -23,6 +30,14 @@ void GameScreenManager::Render() {
 }
 
 void GameScreenManager::Update(float deltaTime, SDL_Event e) {
+
+	//cout << "gsm: " << canProgress;
+
+	if (canProgress == 1) {
+			canProgress = false;
+			ChangeScreen(SCREEN_LEVEL2);
+			canChangeScreen = false;
+	}
 
 	switch (e.type) {
 		case SDL_KEYDOWN:
@@ -40,18 +55,19 @@ void GameScreenManager::Update(float deltaTime, SDL_Event e) {
 							canChangeScreen = false;
 						}
 					}
-
 				break;
 			}
 		break;
 		case SDL_KEYUP:
 			switch (e.key.keysym.sym) {
 			case SDLK_SPACE:
-				canChangeScreen = true;
+				if (activeScreen != SCREEN_LEVEL1) {
+					canChangeScreen = true;
+				}
 			break;
 			}
 	}
-		
+
 	mCurrentScreen->Update(deltaTime, e);
 
 }
@@ -65,7 +81,7 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen) {
 	GameScreenIntro* tempScreen0;
 	GameScreenMenu* tempScreen1;
 	GameScreenLevel1* tempScreen2;
-
+	GameScreenLevel2* tempScreen3;
 
 	switch (newScreen) {
 		case SCREEN_INTRO:
@@ -86,6 +102,13 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen) {
 			mCurrentScreen = (GameScreen*)tempScreen2;
 			tempScreen2 = NULL;
 			activeScreen = SCREEN_LEVEL1;
+
+		break;
+		case SCREEN_LEVEL2:
+			tempScreen3 = new GameScreenLevel2(mRenderer);
+			mCurrentScreen = (GameScreen*)tempScreen3;
+			tempScreen3 = NULL;
+			activeScreen = SCREEN_LEVEL2;
 
 		break;
 	}

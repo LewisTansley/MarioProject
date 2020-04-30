@@ -126,8 +126,6 @@ bool Game::InitSDL() {
 
 }
 
-
-
 bool Game::Update() {
 
 	if (Mix_PlayingMusic() == 0 && gameScreenManager->activeScreen == SCREEN_INTRO) {
@@ -141,6 +139,11 @@ bool Game::Update() {
 	if (Mix_PlayingMusic() == 1 && currentMusic == SCREEN_MENU && gameScreenManager->activeScreen == SCREEN_LEVEL1) {
 		currentMusic = SCREEN_LEVEL1;
 		LoadMusic("Audio/MarioTheme.mp3");
+		Mix_PlayMusic(gMusic, -1);
+	}
+	if (Mix_PlayingMusic() == 1 && currentMusic == SCREEN_LEVEL1 && gameScreenManager->activeScreen == SCREEN_LEVEL2) {
+		currentMusic = SCREEN_LEVEL2;
+		LoadMusic("Audio/TOTTFIY8BIT.mp3");
 		Mix_PlayMusic(gMusic, -1);
 	}
 
@@ -161,7 +164,6 @@ bool Game::Update() {
 				return true;
 			break;
 		}
-	
 	
 	gameScreenManager->Update(deltaTime, e);
 

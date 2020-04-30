@@ -1,4 +1,10 @@
 #pragma once
+#ifndef _COMMONS_H
+#define _COMMONS_H
+
+
+
+
 
 struct Vector2D {
 
@@ -34,3 +40,6 @@ enum FACING {
 	FACING_RIGHT
 
 };
+
+
+#endif // !_COMMONS_H

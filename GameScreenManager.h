@@ -27,6 +27,7 @@ private:
 
 	bool canChangeScreen;
 
+
 };
 
 #endif //_GAMESCREENMANAGER_H

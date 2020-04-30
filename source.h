@@ -8,7 +8,6 @@
 #include "SDL/include/SDL.h"
 #include "SDL/mixer_include/SDL_mixer.h"
 #include "Texture2D.h"
-#include "Commons.h"
 #include "GameScreenManager.h"
 #include <string>
 

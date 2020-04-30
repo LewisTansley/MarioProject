@@ -4,7 +4,6 @@
 
 #include <SDL.h>
 #include "GameScreen.h"
-#include "Commons.h"
 #include "Player.h"
 
 class Texture2D;

@@ -44,6 +44,18 @@ void Texture2D::Render(Vector2D newPosition, SDL_RendererFlip flip, double angle
 
 
 }
+void Texture2D::Render(SDL_Rect srcRect, SDL_Rect destRect, SDL_RendererFlip flip, double angle) {
+
+	//SDL_RenderClear(mRenderer);
+
+	//SDL_SetRenderDrawColor(mRenderer, 0x00, 0x00, 0x00, 0x00);
+
+	SDL_RenderCopyEx(mRenderer, mTexture, &srcRect, &destRect, angle, NULL, flip);
+
+	//SDL_RenderPresent(mRenderer);
+
+
+}
 
 bool Texture2D::LoadFromFile(string path) {
 

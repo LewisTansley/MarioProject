@@ -1,11 +1,13 @@
 #include "Player.h"
 #include "Texture2D.h"
 #include "Constants.h"
+#include "SoundEffect.h"
 
-float velocity;
-float acceleration = 0.02f;
 
-Player::Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition,LevelMap* map) {
+
+using namespace::std;
+
+Player::Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition,LevelMap* map) : Character(renderer, imagePath, startPosition, map) {
 
     mRenderer = renderer;
 	mTexture = new Texture2D(mRenderer);
@@ -27,32 +29,21 @@ Player::Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition,
 
     mCurrentLevelMap = map;
 
+
+
 }
 
 Player::~Player() {
 
     delete mTexture;
-    mRenderer = NULL;
+    mRenderer = NULL; 
     mTexture = NULL;
 
 
 }
 
-void Player::AddGravity(float deltaTime) {
-
-    mPosition.y += 96.0f * deltaTime;
-    mCollidingBottom = true;
-
-}
-
 void Player::Collision(float deltaTime) {
 
-    /*if (mCollidingBottom || mCollidingTop || mCollidingLeft || mCollidingRight) {
-        mColliding = true;
-    }
-    else {
-        mColliding = false;
-    }*/
     if (mCollidingBottom) {
         mCanJump = true;
     }
@@ -61,10 +52,17 @@ void Player::Collision(float deltaTime) {
     }
 }
 
+void Player::AddGravity(float deltaTime) {
+
+    mPosition.y += 0.5f * deltaTime;
+    mCollidingBottom = false;
+
+}
+
 void Player::Jump(float deltaTime) {
 
     if (!mJumping) {
-        mJumpForce = 22.5f;
+        mJumpForce = 20.0f;
         mCanJump = false;
     }
     if (mJumping) {
@@ -78,16 +76,6 @@ void Player::Jump(float deltaTime) {
 }
 
 void Player::Update(float deltaTime, SDL_Event e) {
-
-    int centralXPosition = (int)(mPosition.x + (mTexture->GetWidth() * 0.5f)) / TILE_WIDTH;
-    int footPosition = (int)(mPosition.y + mTexture->GetHeight()) / TILE_HEIGHT;
-
-    if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition) == 0) {
-        AddGravity(deltaTime);
-    }
-    else {
-        mCanJump = true;
-    }
 
     switch (e.type) {
        case SDL_KEYDOWN:
@@ -106,9 +94,13 @@ void Player::Update(float deltaTime, SDL_Event e) {
                break;
                case SDLK_SPACE:
                    if (mCanJump) {
+                       PlaySound("Audio/Jump.wav",0);
                        mJumping = true;
                    }
                break;
+               case SDLK_LALT:
+                   PlaySound("Audio/Shoot.wav", 0);
+                   break;
            }
        break;
        case SDL_KEYUP:
@@ -132,9 +124,22 @@ void Player::Update(float deltaTime, SDL_Event e) {
         }
     }
         
+
+    int centralXPosition = (int)(mPosition.x + (mTexture->GetWidth() * 0.5f)) / TILE_WIDTH;
+    int footPosition = (int)(mPosition.y - 2 + mTexture->GetHeight()) / TILE_HEIGHT;
+
+    if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition) == 0) {
+        AddGravity(deltaTime);
+    }
+    else {
+        mCollidingBottom = true;
+    }
+
     Jump(deltaTime);
-    AddGravity(deltaTime);
+
     Collision(deltaTime);
+
+    //cout << GetPosition().x << " " << GetPosition().y << endl;
 
 }
 
@@ -167,7 +172,6 @@ void Player::Movement(float deltaTime) {
         }
 
         mPosition.x += velocity * deltaTime;
-
     }
     
     SetPosition(mPosition);
