@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "LevelMap.h"
 #include "EnemyKoopa.h"
+#include "Projectile.h"
 
 
 class Texture2D;
@@ -28,6 +29,9 @@ private:
 
 	EnemyKoopa* koopaEnemy[50];
 
+	bool shooting;
+
+	Projectile* projectile;
 
 	void SetLevelMap();
 

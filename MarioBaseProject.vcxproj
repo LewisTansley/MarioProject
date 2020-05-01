@@ -163,6 +163,7 @@
     <ClInclude Include="GameScreenLevel1.h" />
     <ClInclude Include="GameScreenManager.h" />
     <ClInclude Include="Progression.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Shotgun.h" />
     <ClInclude Include="SoundEffect.h" />
     <ClInclude Include="source.h" />
@@ -183,6 +184,7 @@
     <ClCompile Include="GameScreenLevel1.cpp" />
     <ClCompile Include="GameScreenManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Shotgun.cpp" />
     <ClCompile Include="SoundEffect.cpp" />
     <ClCompile Include="Source.cpp" />

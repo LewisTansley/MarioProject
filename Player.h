@@ -26,12 +26,16 @@ public:
 	void SetPosition(Vector2D newPosition);
 	Vector2D GetPosition();
 
+	float GetCollisionRadius();
+
 protected:
 
 	SDL_Renderer* mRenderer;
 	Vector2D mPosition;
 	Texture2D* mTexture;
 	Mix_Chunk* sound;
+
+	float mCollisionRadius;
 
 	bool mColliding;
 	bool mCollidingBottom;

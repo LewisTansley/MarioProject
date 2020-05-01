@@ -29,7 +29,7 @@ Player::Player(SDL_Renderer* renderer, string imagePath, Vector2D startPosition,
 
     mCurrentLevelMap = map;
 
-
+    mCollisionRadius = 15.0f;
 
 }
 
@@ -72,6 +72,12 @@ void Player::Jump(float deltaTime) {
             mJumping = false;
         }
     }
+
+}
+
+float Player::GetCollisionRadius() {
+
+    return mCollisionRadius;
 
 }
 

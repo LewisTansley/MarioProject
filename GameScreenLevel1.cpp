@@ -15,6 +15,8 @@ GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer
 	EnemyKoopa* koopaEnemy[4];
 	Shotgun* superShotgun;
 
+	itemCollected = false;
+
 }
 
 GameScreenLevel1::~GameScreenLevel1() {
@@ -101,63 +103,24 @@ void GameScreenLevel1::Render(){
 	for (int i = 0; i < 4; i++) {
 		koopaEnemy[i]->Render();
 	}
-	superShotgun->Render();
+	if (!itemCollected) {
+		superShotgun->Render();
+	}
 
 }
 
-//void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e) {
-//
-//	if (!mEnemies.empty()) {
-//		int enemyIndexToDelete = -1;
-//		for (unsigned int i = 0; i < mEnemies.size(); i++) {
-//			if (mEnemies[i]->GetPosition().y > 300.0f) {
-//				if (mEnemies[i]->GetPosition().x < (float)(-mEnemies[i]->GetCollisionRadius.width * 0.5f) || mEnemies[i]->GetPosition().x > SCREEN_WIDTH - (float)(mEnemies[i]->GetCollisionRadius().width * 0.55f)) {
-//					//mEnemies[i]->SetAlive(false);
-//				}
-//			}
-//			mEnemies[i]->Update(deltaTime, e);
-//
-//			if ((mEnemies[i]->GetPosition().y > 300.0f || mEnemies[i]->GetPosition().y <= 64.0f) && (mEnemies[i]->GetPosition().x < 64.0f || mEnemies[i]->GetPosition.x > SCREEN_WIDTH - 96.0f)) {
-//
-//			}
-//			else {
-//				if () {
-//
-//				}
-//			}
-//			if (!mEnemies[i]->GetAlive()) {
-//				enemyIndexToDelete = i;
-//			}
-//		}
-//		if (enemyIndexToDelete != -1) {
-//			mEnemies.erase(mEnemies.begin() + enemyIndexToDelete);
-//		}
-//	}
-//
-//}
-
-//void GameScreenLevel1::CreateKoopa(Vector2D position, FACING direction, float speed) {
-//
-//
-//	mEnemies.push_back(koopaEnemy);
-//
-//}
-
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e){
 	
-
-	//if (Collisions::Instance()->Circle(myCharacter, myCharacter)) {
-	//} 
-
-	//UpdateEnemies(deltaTime, e);
-
-	if (myCharacter->GetPosition().x > 220 && myCharacter->GetPosition().x < 250 && myCharacter->GetPosition().y > 110 && myCharacter->GetPosition().y < 130) {
-		canProgress = true;
+	if (!itemCollected) {
+		if (myCharacter->GetPosition().x > 220 && myCharacter->GetPosition().x < 250 && myCharacter->GetPosition().y > 110 && myCharacter->GetPosition().y < 130) {
+			canProgress = true;
+			itemCollected = true;
+			PlaySound("Audio/Powerup.wav", 0);
+		}
 	}
 	if (canProgress && myCharacter->GetPosition().x > 450 && myCharacter->GetPosition().x < 480 && myCharacter->GetPosition().y > 24 && myCharacter->GetPosition().y < 26) {
 		pipeEntered = true;
 	}
-	//cout << "gsl1: " << canProgress << endl;;
 
 	myCharacter->Update(deltaTime, e);
 
@@ -165,7 +128,5 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e){
 		koopaEnemy[i]->Update(deltaTime, e);
 	}
 	superShotgun->Update(deltaTime, e);
-
-
 
 }

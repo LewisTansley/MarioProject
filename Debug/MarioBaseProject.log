@@ -1,9 +1,8 @@
-﻿  GameScreenLevel1.cpp
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(15,14): warning C4101: 'koopaEnemy': unreferenced local variable
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(16,11): warning C4101: 'superShotgun': unreferenced local variable
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(67,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(80,184): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(80,127): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(83,184): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel1.cpp(83,127): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  GameScreenLevel2.cpp
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(11,14): warning C4101: 'projectile': unreferenced local variable
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(61,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(74,188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(74,131): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(77,188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(77,131): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   MarioBaseProject.vcxproj -> C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Debug\MarioBaseProject.exe

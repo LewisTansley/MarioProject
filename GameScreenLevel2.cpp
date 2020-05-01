@@ -8,7 +8,8 @@ GameScreenLevel2::GameScreenLevel2(SDL_Renderer* renderer) : GameScreen(renderer
 
 	mRenderer = renderer;
 	InitLevel();
-
+	Projectile* projectile;
+	shooting = false;
 }
 
 GameScreenLevel2::~GameScreenLevel2() {
@@ -17,9 +18,6 @@ GameScreenLevel2::~GameScreenLevel2() {
 	mBackgroundTexture = NULL;
 
 	mLevelMap = NULL;
-
-	//delete myCharacter;
-	//myCharacter = NULL;
 
 }
 void GameScreenLevel2::SetLevelMap() {
@@ -58,6 +56,8 @@ bool GameScreenLevel2::InitLevel() {
 
 	myCharacter = new Player(mRenderer, "Images/MarioGuy.png", Vector2D(64, 330), mLevelMap);
 
+	projectile = new Projectile(mRenderer, "Images/ProjectileSheet.png", mLevelMap,Vector2D(myCharacter->GetPosition().x, myCharacter->GetPosition().y),FACING_RIGHT,2.0f, 5);
+
 	srand(time(NULL));
 	 
 	int upperWidth = SCREEN_WIDTH;
@@ -89,6 +89,9 @@ void GameScreenLevel2::Render() {
 	for (int i = 0; i < 50; i++) {
 		koopaEnemy[i]->Render();
 	}
+	if (shooting) {
+		projectile->Render();
+	}
 }
 
 void GameScreenLevel2::Update(float deltaTime, SDL_Event e) {
@@ -97,16 +100,28 @@ void GameScreenLevel2::Update(float deltaTime, SDL_Event e) {
 		case SDL_KEYDOWN:
 			switch (e.key.keysym.sym) {
 				case SDLK_LALT:
-					PlaySound("Audio/Shoot.wav", 0);
+					if (!shooting) {
+						shooting = true;
+						PlaySound("Audio/Shoot.wav", 0);
+						shooting = false;
+					}
 				break;
 			}
 		break; 
+	}
+
+	if (shooting) {
+		shooting = false;
 	}
 
 	myCharacter->Update(deltaTime, e);
 
 	for (int i = 0; i < 50; i++) {
 		koopaEnemy[i]->Update(deltaTime, e);
+	}
+
+	if (shooting) {
+		projectile->Update(deltaTime, e);
 	}
 
 }

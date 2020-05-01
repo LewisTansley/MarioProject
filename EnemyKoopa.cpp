@@ -108,7 +108,6 @@ void EnemyKoopa::Render() {
 		mTexture->Render(portionOfSpritesheet, destRect, SDL_FLIP_HORIZONTAL,0);
 
 	}
-	//cout << "!" << endl;
 }
 void EnemyKoopa::Update(float deltaTime, SDL_Event e) {
 
@@ -116,7 +115,6 @@ void EnemyKoopa::Update(float deltaTime, SDL_Event e) {
 
 	mFrameDelay -= deltaTime;
 	if (mFrameDelay <= 0.0f) {
-		cout << "!" << endl;
 		mFrameDelay = 360;
 		mCurrentFrame++;
 		if (mCurrentFrame > 2) {

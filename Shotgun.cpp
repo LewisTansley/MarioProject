@@ -31,8 +31,17 @@ Shotgun::Shotgun(SDL_Renderer* renderer, string imagePath, LevelMap* map, Vector
 
 	GetSpriteCount = tiles;
 
+	mCollisionRadius = 15.0f;
+
+
 }
 Shotgun::~Shotgun() {
+
+}
+
+float Shotgun::GetCollisionRadius() {
+
+	return mCollisionRadius;
 
 }
 
@@ -69,7 +78,6 @@ void Shotgun::Update(float deltaTime, SDL_Event e) {
 
 	mFrameDelay -= deltaTime;
 	if (mFrameDelay <= 0.0f) {
-		cout << "!" << endl;
 		mFrameDelay = 1000;
 		mCurrentFrame++;
 		if (mCurrentFrame > 2) {
@@ -77,4 +85,8 @@ void Shotgun::Update(float deltaTime, SDL_Event e) {
 		}
 	}
 }
+Vector2D Shotgun::GetPosition() {
 
+	return mPosition;
+
+}

@@ -40,6 +40,8 @@ private:
 
 	vector<EnemyKoopa*>mEnemies;
 
+	bool itemCollected;
+
 };
 
 #endif //_GAMESCREENLEVEL_1_H
