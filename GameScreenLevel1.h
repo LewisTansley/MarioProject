@@ -8,6 +8,7 @@
 #include "LevelMap.h"
 #include "EnemyKoopa.h"
 #include <vector>
+#include "Shotgun.h"
 
 class Texture2D;
 class Player;
@@ -29,6 +30,7 @@ private:
 	Texture2D* mBackgroundTexture;
 	Player* myCharacter;
 	EnemyKoopa* koopaEnemy[4];
+	Shotgun* superShotgun;
 
 	void SetLevelMap();
 

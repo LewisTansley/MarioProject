@@ -100,7 +100,7 @@ void GameScreenLevel2::Update(float deltaTime, SDL_Event e) {
 					PlaySound("Audio/Shoot.wav", 0);
 				break;
 			}
-		break;
+		break; 
 	}
 
 	myCharacter->Update(deltaTime, e);

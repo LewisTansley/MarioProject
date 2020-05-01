@@ -5,6 +5,8 @@
 
 using namespace::std;
 
+
+
 EnemyKoopa::EnemyKoopa(SDL_Renderer* renderer, string imagePath, LevelMap* map, Vector2D startPosition, FACING startFacing, float movementSpeed, int tiles) : Character(renderer, imagePath, startPosition, map) {
 
 	mRenderer = renderer;
@@ -25,6 +27,8 @@ EnemyKoopa::EnemyKoopa(SDL_Renderer* renderer, string imagePath, LevelMap* map, 
 	mSingeSpriteHeight = mTexture->GetHeight();
 
 	mCurrentLevelMap = map;
+
+	GetSpriteCount = tiles;
 
 }
 EnemyKoopa::~EnemyKoopa() {
@@ -80,7 +84,14 @@ void EnemyKoopa::FlipRightWayUp() {
 }
 void EnemyKoopa::Render() {
 
-	int left = 0.0f;
+	int left;
+
+	if (GetSpriteCount > 1) {
+		left = mCurrentFrame * mSingleSpriteWidth;
+	}
+	else {
+		left = 0;
+	}
 
 	if (mInjured) {
 		left = mSingleSpriteWidth;
@@ -102,6 +113,16 @@ void EnemyKoopa::Render() {
 void EnemyKoopa::Update(float deltaTime, SDL_Event e) {
 
 	Character::Update(deltaTime, e);
+
+	mFrameDelay -= deltaTime;
+	if (mFrameDelay <= 0.0f) {
+		cout << "!" << endl;
+		mFrameDelay = 360;
+		mCurrentFrame++;
+		if (mCurrentFrame > 2) {
+			mCurrentFrame = 0;
+		}
+	}
 
 	if (!mInjured) {
 		if (mFacingDirection == FACING_LEFT) {

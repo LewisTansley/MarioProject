@@ -13,6 +13,7 @@ GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer
 	InitLevel();
 
 	EnemyKoopa* koopaEnemy[4];
+	Shotgun* superShotgun;
 
 }
 
@@ -83,6 +84,7 @@ bool GameScreenLevel1::InitLevel() {
 		}
 	}
 
+	superShotgun = new Shotgun(mRenderer, "Images/shotgunSmall.png", mLevelMap, Vector2D(230, 125), FACING_LEFT, 0.0f, 1);
 
 	return true;
 
@@ -99,6 +101,7 @@ void GameScreenLevel1::Render(){
 	for (int i = 0; i < 4; i++) {
 		koopaEnemy[i]->Render();
 	}
+	superShotgun->Render();
 
 }
 
@@ -148,7 +151,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e){
 
 	//UpdateEnemies(deltaTime, e);
 
-	if (myCharacter->GetPosition().x > 210 && myCharacter->GetPosition().x < 264 && myCharacter->GetPosition().y > 110 && myCharacter->GetPosition().y < 130) {
+	if (myCharacter->GetPosition().x > 220 && myCharacter->GetPosition().x < 250 && myCharacter->GetPosition().y > 110 && myCharacter->GetPosition().y < 130) {
 		canProgress = true;
 	}
 	if (canProgress && myCharacter->GetPosition().x > 450 && myCharacter->GetPosition().x < 480 && myCharacter->GetPosition().y > 24 && myCharacter->GetPosition().y < 26) {
@@ -161,4 +164,8 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e){
 	for (int i = 0; i < 4; i++) {
 		koopaEnemy[i]->Update(deltaTime, e);
 	}
+	superShotgun->Update(deltaTime, e);
+
+
+
 }

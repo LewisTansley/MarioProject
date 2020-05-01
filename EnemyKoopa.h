@@ -47,6 +47,10 @@ protected:
 	virtual void AddGravity(float deltaTime);
 	virtual void Collision(float deltaTime);
 
+	int mFrameDelay = 360;
+	int mCurrentFrame = 0;
+
+	int GetSpriteCount;
 
 private:
 
