@@ -1,8 +1,21 @@
-﻿  GameScreenLevel2.cpp
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(11,14): warning C4101: 'projectile': unreferenced local variable
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(61,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(74,188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(74,131): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(77,188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\GameScreenLevel2.cpp(77,131): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Player.cpp
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Player.cpp(149,36): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Player.cpp(153,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Projectile.cpp
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(26,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(27,42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(43,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(50,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(53,44): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(53,44): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(53,63): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(53,63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(55,62): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(55,62): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(55,81): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(55,81): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(69,26): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(90,30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Projectile.cpp(94,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   MarioBaseProject.vcxproj -> C:\Users\Lewis\Documents\GitHub\MarioProject\MarioProject\Debug\MarioBaseProject.exe
